@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Tekstur Kertas Blueprint & Grid Lembut */
+  .bg-paper-pattern {
+    background-color: #FDFCF8;
+    background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  
+  .shadow-paper {
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 
+                0 1px 3px rgba(0, 0, 0, 0.03);
+  }
+
+  /* Meja Arsitek (Perspective Base) dengan ketebalan 3D */
+  .iso-board {
+    /* Miring ke belakang 60 derajat, putar 45 derajat */
+    transform: rotateX(60deg) rotateZ(-45deg);
+    transform-style: preserve-3d;
+    /* Layer 1: Ketebalan papan (warna abu), Layer 2: Bayangan jatuh (shadow) */
+    box-shadow: 
+      -1px 1px 0 #cbd5e1,
+      -2px 2px 0 #cbd5e1,
+      -3px 3px 0 #cbd5e1,
+      -4px 4px 0 #cbd5e1,
+      -5px 5px 0 #cbd5e1,
+      -6px 6px 0 #cbd5e1,
+      -7px 7px 0 #cbd5e1,
+      -8px 8px 0 #cbd5e1,
+      -25px 25px 40px rgba(0,0,0,0.15);
+    transition: transform 0.5s ease;
+  }
+
+  /* Node yang Berdiri di atas Meja (Pop-up 3D) */
+  .iso-node-stand {
+    /* Putar berlawanan dengan papan agar berdiri tegak menghadap layar, lalu naikkan (Z) */
+    transform: rotateZ(45deg) rotateX(-60deg) translateZ(40px);
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+  }
+  
+  /* Interaksi hover: Node sedikit melayang saat disentuh kursor */
+  .iso-node-stand:hover {
+    transform: rotateZ(45deg) rotateX(-60deg) translateZ(55px);
+  }
+
+  .font-serif-doc {
+    font-family: 'Merriweather', serif;
+  }
+  .font-mono-tech {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+body {
+  @apply bg-[#FDFCF8] text-slate-800 overflow-hidden font-sans selection:bg-slate-200;
+}
