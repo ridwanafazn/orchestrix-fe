@@ -55,8 +55,13 @@
   .font-mono-tech {
     font-family: 'JetBrains Mono', monospace;
   }
+  .preserve-visibility {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
 }
 
+/* KUNCI: overflow-hidden dihapus dari sini agar browser bisa scroll jika diperlukan */
 body {
-  @apply bg-[#FDFCF8] text-slate-800 overflow-hidden font-sans selection:bg-slate-200;
+  @apply bg-[#FDFCF8] text-slate-800 font-sans selection:bg-slate-200;
 }
